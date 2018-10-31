@@ -1,0 +1,145 @@
+﻿<Page x:Class="BookSharp.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+        Height="570"
+        Width="794"
+      Title="LoginPage">
+
+    <Page.Resources>
+        <Style x:Key="LightHover" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+            <Setter Property="Background" Value="#FF303030"/>
+            <Setter Property="Foreground" Value="#FFDEDEDE"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFECEAE2"/>
+                    <Setter Property="Foreground" Value="#FF303030"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DarkHover" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+            <Setter Property="Background" Value="#FF94C771"/>
+            <Setter Property="Foreground" Value="#FF303030"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF303030"/>
+                    <Setter Property="Foreground" Value="#FFDEDEDE"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <!--Header Icon Area-->
+            <StackPanel Background="#FF94C771">
+                <Image  Grid.Row="0" Source="pack://application:,,,/Resources/Images/user2.png" VerticalAlignment="Center" Height="36" Margin="0 30" />
+            </StackPanel>
+            <!--Header Title Area-->
+            <Grid Grid.Row="0" Grid.Column="1" Background="#FF303030">
+                <TextBlock Text="LOGIN TO EXISTING ACCOUNT" FontSize="16" FontStyle="Italic" VerticalAlignment="Center" Margin="40" Foreground="#FFDEDEDE"/>
+            </Grid>
+        </Grid>
+        <!--Grey Border Around Container-->
+        <Border Grid.Row="1" Padding="22" Background="#FFECEAE2">
+            <!--White Container With Rounded Border-->
+            <Border Padding="15" Background="White" CornerRadius="10">
+                <Grid Grid.Row="1" Background="White" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2.0*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.8*"/>
+                    </Grid.RowDefinitions>
+                    <!--Brand Logo/Name Row-->
+                  
+                    <TextBlock Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 25" Text="BOOK#" FontSize="54" FontFamily="Century Gothic" Foreground="#FF2e2e2e" />
+                    <!--UserName Row-->
+                    <Grid Grid.Row="1">
+                      
+                        <!--UserName TextBlock-->
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--UserName Input TextBox-->
+                            <TextBox x:Name="txtBoxLoginUsername" Foreground="#FFD1CDBC" FontStyle="Italic" Text="Username" Grid.Row="0" Padding="8" Height="35" BorderThickness="0 0 0 2" BorderBrush="#FFD1CDBC" Width="250"  VerticalAlignment="Center" GotFocus="txtBoxLoginUsername_GotFocus" LostFocus="txtBoxLoginUsername_LostFocus" Cursor="IBeam"/>
+
+                        </Grid>
+                    </Grid>
+                    <!--PassWord Row-->
+                    <Grid Grid.Row="2">
+                   
+                        <Grid Grid.Column="1" Focusable="True">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!--Password Input TextBox-->
+                            <TextBlock x:Name="PW" Grid.Row="0" Foreground="#FFD1CDBC" FontStyle="Italic" Text="Password" Margin="0 0 176 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <PasswordBox x:Name="txtBoxLoginPW" Grid.Row="0" Padding="8" Height="35" BorderThickness="0 0 0 2" BorderBrush="#FFD1CDBC" Width="250" VerticalAlignment="Center" GotFocus="txtBoxLoginPW_GotFocus" LostFocus="txtBoxLoginPW_LostFocus" Background="Transparent" Cursor="IBeam" />
+
+
+
+                            <!--Error Message TextBlock-->
+                            <TextBlock x:Name="txtBlockError1" Visibility="Hidden" Grid.Row="1" Text="Username does not exist"  Margin="25 15 0 0"   Width="250" FontSize="10.5" Foreground="#FFEC0303"/>
+                            <TextBlock x:Name="txtBlockError2" Visibility="Hidden" Grid.Row="1" Text="Password is incorrect" Width="250" Margin="25 15 0 0" FontSize="10.5" Foreground="#FFEC0303"/>
+                            
+                        </Grid>
+                    </Grid>
+
+                    <!--Buttons-->
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Cancel Button-->
+                        <Button Style="{StaticResource LightHover}" Click="CancelButton_Click" Grid.Column="0" Height="35" Width="110" Content="Cancel"  FontSize="12" FontFamily="Century Gothic" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 20 25 0" Cursor="Hand"/>
+                        <!--Log In Button-->
+                        <Button Style="{StaticResource DarkHover}" IsDefault="True" Click="LoginButton_Click" Grid.Column="2" Height="35" Width="110" Content="LOG IN"  FontSize="12.5" FontFamily="Century Gothic" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25 20 0 0"  Cursor="Hand"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+</Page>

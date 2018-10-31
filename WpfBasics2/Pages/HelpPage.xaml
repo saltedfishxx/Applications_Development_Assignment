@@ -1,0 +1,97 @@
+﻿<Page x:Class="BookSharp.Pages.HelpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+     Height="1122"
+      Width="795"
+      Title="TourDetailsPage" >
+    <Page.Resources>
+        <Style x:Key="Underline" TargetType="TextBlock">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="TextDecorations" Value="Underline"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+
+    <ScrollViewer Height="474" VerticalAlignment="Top">
+        <Grid>
+
+            <!--Grey Border Around Container-->
+            <Border  Padding="27" Background="Transparent">
+                <!--White Container with Rounded Corners-->
+                <Border Padding="15" Background="White" CornerRadius="10">
+
+                    <Grid Background="White" >
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="pack://application:,,,/Resources/Images/help2.png" VerticalAlignment="Center" Height="25" Width="25" Margin="20 22 0 0" Opacity="0.75" />
+                                <TextBlock Text="ABOUT US"  FontSize="18" Padding="0 20 0 0" Margin="20 5" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock TextWrapping="WrapWithOverflow" VerticalAlignment="Top" FontSize="12" Padding="0 10 0 30" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9">BookSharp is a leading tour booking and travel company in the continent of Asia. Our main office is situated in Singapore, with agents also operating in almost every part of Asia, offering tours in China, Japan, SEA, and more! <LineBreak/> <LineBreak/>  Among the services offered by BookSharp stands out the coordination of itineraries for individuals or groups, including tours, optional hotel reservations and flights, and any other special requirements necessary.
+
+<LineBreak/>  <LineBreak/>  The company also offers exclusive options in our tour packages like added on insurance, to make these trips the best experiences you could possibly have.</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="pack://application:,,,/Resources/Images/mail2.png" VerticalAlignment="Center" Height="29" Width="29" Margin="18 22 0 0" Opacity="0.8" />
+                                <TextBlock Text="CONTACT US"  FontSize="18"  Padding="0 20 0 0"  Margin="17 5" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                                <TextBlock VerticalAlignment="Top" Text="For any inquiries or feedback, send us a message at our "  TextWrapping="Wrap" FontSize="12" Padding="0 10" Margin="65 0 0 0" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                                <Button x:Name="ContactUs" Background="Transparent" Click="ContactUs_Click">
+                                    <TextBlock VerticalAlignment="Top" Style="{StaticResource Underline}" Text="contact page."  TextWrapping="Wrap" FontSize="12" Padding="0 10" Margin=" 0" Foreground="#FF5EB635" Opacity="0.9"/>
+                                </Button>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="pack://application:,,,/Resources/Images/help2.png" VerticalAlignment="Center" Height="25" Width="25" Margin="20 22 0 0" Opacity="0.75" />
+                                <TextBlock Text="FAQ"  FontSize="18"  Padding="0 20 0 0" Margin="18 5" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" Text="1.   What kinds of payment do you accept?"  FontSize="12" Padding="0 10" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" TextWrapping="Wrap" FontSize="12" Padding="0 10 0 20" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9">
+                                Payments will through credit card, with your Visa, Mastercard or Amex details entered on the account creation. You can easily change your credit card details in the settings page.
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" Text="2.   How secure is my transaction?"  FontSize="12" Padding="0 10" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" TextWrapping="Wrap"  FontSize="12" Padding="0 10 0 20" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9">Your privacy is of our utmost concern. All transactions are made entirely through third parties, and our company does not process any of your payment information. We will never sell or share your information.</TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" Text="3.   Do I need travel insurance?"  FontSize="12" Padding="0 10" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" TextWrapping="Wrap"  FontSize="12" Padding="0 10 0 20" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9">Travel insurance is compulsory for BookSharp travellers. You must provide proof of your travel insurance on the first day of your trip, otherwise you will not be able to join the trip without it. You may purchase BookSharp's offered insurance add-on on your cart selection if needed.</TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" Text="4.   What happens to my money when I pay for my trip?"  FontSize="12" Padding="0 10" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" TextWrapping="Wrap"  FontSize="12" Padding="0 10 0 20" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9">When BookSharp receives money from either you or from your travel agent, the funds are deposited into a Client Trust Account. The money stays in this account until the day of departure of your trip. BookSharp's Client Trust Account is independently audited every year. Failure to meet financial criteria reflecting the financial viability of a travel agent results in revocation of the agent's licence to trade. We are licensed under these arrangements.</TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" Text="5.   Can I opt out of certain activities if I want to?"  FontSize="12" Padding="0 10" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock VerticalAlignment="Top" TextWrapping="Wrap"  FontSize="12" Padding="0 10 0 40" Margin="65 0" Foreground="#FF0C0C0C" Opacity="0.9">Of course. If there are included or optional activities that you don’t wish to participate in, you can opt out of them by informing your tour guide. The exception to this is when we are trekking or travelling from one destination to the next. Please note that if you choose to opt out of an included activity, reimbursement will not be made by BookSharp.</TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Border>
+
+        </Grid>
+
+    </ScrollViewer>
+</Page>

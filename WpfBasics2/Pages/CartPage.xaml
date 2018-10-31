@@ -1,0 +1,455 @@
+﻿<Page x:Class="BookSharp.Pages.CartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="479" d:DesignWidth="800"
+      Title="CartPage" KeepAlive="True" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style x:Key="DeleteHover" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <StackPanel>
+        <StackPanel x:Name="Container" Background="Transparent"  HorizontalAlignment="Stretch" Height="479" >
+
+            <StackPanel Orientation="Horizontal">
+                <Image Source="pack://application:,,,/Resources/Images/cart1.png" VerticalAlignment="Center" Height="19" Width="19" Margin="29 3 0 0" Opacity="0.65" />
+                <TextBlock Text="CART"   FontSize="15" Padding="0 20" Margin="20 8 20 7" Foreground="#FF0C0C0C" FontFamily="pack://application:,,,/Resources/Fonts/#Corbert"/>
+            </StackPanel>
+            <ScrollViewer Height="270" Width="760" VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="0 0 0 50" Width="750" Height="auto">
+                    <Button  Style="{StaticResource NoHover}" Background="White" Width="760" Height="40">
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="TourID" Margin="25 0 0 0"/>
+                            <TextBlock Text="Tour Info" Margin="45 0 0 0"/>
+                            <TextBlock Text="Qty" Margin="100 0 0 0"/>
+                            <TextBlock Text="Flight" Margin="40 0 0 0"/>
+                            <TextBlock Text="Rooms" Margin="30 0 0 0"/>
+                            <TextBlock Text="Addons" Margin="20 0 0 0"/>
+                            <TextBlock Text="SubTotal" Margin="40 0 27 0"/>
+                            <TextBlock Text="Del" Margin="35 0 0 0"/>
+                            <TextBlock Text="Edit" Margin="40 0 150 0"/>
+                        </StackPanel>
+                    </Button>
+                    <!--No Bookmarks txtBlock-->
+                    <TextBlock x:Name="txtBlockNone" Text="None Selected" FontSize="16" Foreground="DarkGray" Padding="330 30" Background="White" Width="760" Height="80"/>
+
+
+                    <!--Button1-->
+                    <Button x:Name="Button1"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt1" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt1" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt1" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate1" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty1" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight1" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice1" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms1" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice1" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons1" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal1" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton1" Click="DeleteButton1_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton1" Click="EditButton1_Click" Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button2-->
+                    <Button x:Name="Button2"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt2" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt2" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt2" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate2" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty2" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight2" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice2" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms2" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice2" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons2" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal2" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton2" Click="DeleteButton2_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton2" Click="EditButton2_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button3-->
+                    <Button x:Name="Button3"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt3" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt3" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt3" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate3" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty3" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight3" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice3" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms3" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice3" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons3" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal3" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton3" Click="DeleteButton3_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton3" Click="EditButton3_Click" Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button4-->
+                    <Button x:Name="Button4"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt4" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt4" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt4" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate4" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty4" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight4" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice4" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms4" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice4" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons4" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal4" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton4" Click="DeleteButton4_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton4" Click="EditButton4_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40" >
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button5-->
+                    <Button x:Name="Button5"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt5" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt5" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt5" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate5" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty5" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight5" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice5" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms5" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice5" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons5" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal5" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton5" Click="DeleteButton5_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton5" Click="EditButton5_Click" Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button6-->
+                    <Button x:Name="Button6"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt6" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt6" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt6" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate6" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty6" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight6" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice6" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms6" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice6" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons6" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal6" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton6" Click="DeleteButton6_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton6" Click="EditButton6_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button7-->
+                    <Button x:Name="Button7" Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt7" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt7" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt7" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate7" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty7" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight7" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice7" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms7" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice7" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons7" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal7" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton7" Click="DeleteButton7_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton7" Click="EditButton7_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button8-->
+                    <Button x:Name="Button8"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt8" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt8" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt8" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate8" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty8" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight8" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice8" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms8" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice8" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons8" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal8" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton8" Click="DeleteButton8_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton8" Click="EditButton8_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40" >
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button9-->
+                    <Button x:Name="Button9"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt9" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt9" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt9" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate9" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty9" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight9" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice9" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms9" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice9" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons9" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal9" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton9" Click="DeleteButton9_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton9" Click="EditButton9_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40" >
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button10-->
+                    <Button x:Name="Button10"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt10" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt10" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt10" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate10" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty10" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight10" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice10" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms10" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice10" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons10" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal10" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton10" Click="DeleteButton10_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton10" Click="EditButton10_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40" >
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button11-->
+                    <Button x:Name="Button11"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt11" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt11" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt11" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate11" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty11" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight11" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice11" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms11" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice11" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons11" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal11" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton11" Click="DeleteButton11_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton11" Click="EditButton11_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40" >
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Button1-->
+                    <Button x:Name="Button12"  Style="{StaticResource NoHover}"   Background="White" Width="760" Height="80">
+                        <StackPanel Orientation="Horizontal" Width="760" >
+                            <TextBlock x:Name="TourIDTxt12" Width="60" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 5" Margin="25 0 0 0"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                                <TextBlock x:Name="TourNameTxt12" Width="115" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="0 0 0 5"/>
+                                <StackPanel Orientation="Horizontal"  Width="130" HorizontalAlignment="Left">
+                                    <TextBlock x:Name="TourDescTxt12" Width="115" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                    <TextBlock Text="..." Width="10" FontSize="11" HorizontalAlignment="Left" Padding="0 5 0 0"/>
+                                </StackPanel>
+                                <TextBlock x:Name="TourDate12" Width="115" FontSize="11" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Qty12" Text="NIL" Width="60" TextAlignment="Center" Margin="10 0 0 0"/>
+                            <StackPanel>
+                                <TextBlock x:Name="Flight12" Text="NIL" Width="60" TextAlignment="Center" />
+                                <TextBlock x:Name="FlightPrice12" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock x:Name="Rooms12" Text="NIL" Width="60" TextAlignment="Center"/>
+                                <TextBlock x:Name="RoomPrice12" Text="0.00" Width="60" TextAlignment="Center"/>
+                            </StackPanel>
+                            <TextBlock x:Name="Addons12" Text="NIL" Width="60" TextAlignment="Center"/>
+                            <TextBlock x:Name="Subtotal12" Text="0.00" Width="60" TextAlignment="Center" Margin="25 0 10 0"/>
+                            <Button x:Name="DeleteButton12" Click="DeleteButton12_Click" Style="{StaticResource DeleteRedStyle}" Cursor="Hand"  VerticalAlignment="Center" Margin="35 0 0 0" Height="40" Width="40">
+                                <Image Source="pack://application:,,,/Resources/Images/Trash1.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                            <Button x:Name="EditButton12" Click="EditButton12_Click"  Cursor="Hand"  VerticalAlignment="Center" Margin="20 0 0 0" Height="40" Width="40" >
+                                <Image Source="pack://application:,,,/Resources/Images/pencil-edit-button.png" VerticalAlignment="Center" Height="20" Width="20" Margin="0 0 0 0" Opacity="0.8" />
+                            </Button>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="SUBSIDY : " FontSize="20" FontWeight="Bold" Margin="0 20 10 0"/>
+                <TextBlock x:Name="subsidy"  VerticalAlignment="Bottom" FontSize="20" Margin=" 0 0 50 0"/>
+                <TextBlock Text="GRAND TOTAL : " FontSize="20" FontWeight="Bold" Margin="0 20 10 0"/>
+                <TextBlock x:Name="TotalCost" Text="0000.00" VerticalAlignment="Bottom" FontSize="20" Margin=" 0 0 50 0"/>
+            </StackPanel>
+            <Button x:Name="Checkout" Click="Checkout_Click" Content="CHECKOUT  >>" Padding="5" Width="150" Height="40" HorizontalAlignment="Right" FontWeight="Bold" Margin="0 10 50 0"/>
+        </StackPanel>
+
+    </StackPanel>
+</Page>

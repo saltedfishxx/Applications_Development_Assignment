@@ -1,0 +1,113 @@
+﻿<Page x:Class="BookSharp.Pages.TourDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+      Height="1402"
+      Width="795"
+      Title="TourDetailsPage" Loaded="Page_Loaded">
+
+    <ScrollViewer Height="474" VerticalAlignment="Top">
+        <Grid>
+
+        <!--Grey Border Around Container-->
+        <Border  Padding="27" Background="Transparent">
+            <!--White Container with Rounded Corners-->
+            <Border Padding="15" Background="White" CornerRadius="10">
+                <Grid Background="White" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="330"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="117"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--Brand Logo/Name Row-->
+                    <StackPanel Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="TextTourID" Grid.Column="0" Text="{Binding TourID}"  VerticalAlignment="Top" Width="auto" HorizontalAlignment="Left"  Margin="20 5 0 30"  FontSize="20" FontWeight="Bold" Height="21"/>
+                            <TextBlock Grid.Column="0" Text=":"  VerticalAlignment="Top" Width="auto" HorizontalAlignment="Left"  Margin="5 5 5 5"  FontSize="20" FontWeight="Bold" Height="21" />
+                            <TextBlock x:Name="TextTourTitle" Grid.Column="0" Text="{Binding TourDesc}"  VerticalAlignment="Top" Width="auto" HorizontalAlignment="Left"  Margin="5 5 5 20"  FontSize="20" FontWeight="Bold" Height="21" />
+                        </StackPanel>
+
+                        <Grid Height="270">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1.3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name ="ImageTourSource" Source="{Binding TourImageSource}" Height="188" Width="282" Margin="22,0,22,0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" />
+                            <TextBlock x:Name="TextTourDuration" Text="{Binding TourDuration}"  Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20 10 0 33"  FontSize="14" FontWeight="Bold" Height="21" />
+                            <StackPanel Grid.Column="1" Height="270">
+                                <TextBlock x:Name="TextTourSummary" Grid.Row="1" TextWrapping="Wrap" Margin="0 5 20 0" Height="200" />
+                                <TextBlock x:Name="TextTourPrice" Text="{Binding TourPrice}"  VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0 15 15 0"  FontSize="15" FontWeight="Bold" Height="21" Width="116"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+
+                        <!--Tour Itinerary Title TextBlock-->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Tour Itinerary:" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="50 40 0 10" FontSize="14" FontWeight="Bold"/>
+
+                    </Grid>
+                    <!--Itenary Scrollable Textbox Bound to text file -->
+                    <Grid Grid.Row="2" Margin="0,10,0,118">
+                        <ScrollViewer x:Name="ChildScroll" Margin="30,20,30,-98" >
+
+                            <TextBlock x:Name="ItineraryDetails"  Margin="30 10 30 10" TextWrapping="Wrap"/>
+
+                        </ScrollViewer>
+                    </Grid>
+
+                    <!--Buttons-->
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Bookmarks Button-->
+                        <Button x:Name="BookmarksButton" Click="BookmarksButton_Click" Grid.Column="0" Height="50" Width="240" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 10 60 0" Cursor="Hand">
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="pack://application:,,,/Resources/Images/bookmark1.png" VerticalAlignment="Center" Height="18" Margin="0 0 0 0" Opacity="0.65" />
+
+                                <TextBlock Text="ADD TO BOOKMARKS" Visibility="{Binding ButtonVisibility}" FontSize="15"  FontWeight="Bold" FontFamily="Century Gothic" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15 0 0 0"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!--Cart Button-->
+                        <Button x:Name="AddCartButton"  Grid.Column="2" Height="50" Width="240" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="60 10 0 0"  Cursor="Hand" Click="AddCartButton_Click">
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="pack://application:,,,/Resources/Images/cart1.png" VerticalAlignment="Center" Height="18" Margin="0 0 0 0" Opacity="0.65" />
+
+                                <TextBlock Text="ADD TO CART" Visibility="{Binding ButtonVisibility}" FontSize="15"  FontWeight="Bold" FontFamily="Century Gothic" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15 0 0 0"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                    <StackPanel Grid.Row="4" >
+                        <TextBlock  Text="Reviews:" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="50 55 0 0" FontSize="14" FontWeight="Bold"/>
+                        <ScrollViewer Height="370" Margin="30,25,30,50" VerticalScrollBarVisibility="Visible">
+
+                            <StackPanel x:Name="ReviewStackPanel" Margin="30 10 20 10">
+                                <Grid x:Name="NoReviewsGrid"  Height="200">
+                                    <TextBlock Text="No Reviews Yet" FontWeight="Medium" Foreground="DarkGray" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+
+                            </StackPanel>
+
+
+                        </ScrollViewer>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+    </ScrollViewer>
+</Page>

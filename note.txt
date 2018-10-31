@@ -1,0 +1,8 @@
+Things to note:
+- Test for free account login:
+  Username: admin1
+  Password: password1
+
+- Test for premium account login:
+  Username: administrator
+  Password: password1

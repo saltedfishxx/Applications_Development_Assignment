@@ -1,0 +1,93 @@
+﻿<Page x:Class="BookSharp.Pages.CartItemSelectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="474" d:DesignWidth="800"
+      Title="CartItemSelectionPage" Loaded="Page_Loaded">
+
+    <StackPanel>
+        <Grid Height="474">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.12*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Background="#FF94C771" Grid.Row="0"  Orientation="Horizontal">
+                <TextBlock x:Name="TourID" Text="{Binding TourID}" Margin="90 17 5 0" FontWeight="Bold" Foreground="#FF252525" FontSize="14"/>
+                <TextBlock Text=":" Margin="0 17 5 0" FontWeight="Bold" Foreground="#FF252525" FontSize="14"/>
+                <TextBlock x:Name="TourName" Text="{Binding TourName}" Margin="0 17 5 0" FontWeight="Bold" Foreground="#FF252525" FontSize="14"/>
+                <TextBlock Text=">>" Margin="0 17 5 0" FontWeight="Bold" Foreground="#FF252525" FontSize="14"/>
+                <TextBlock x:Name="TourDesc" Text="{Binding TourDesc}" Margin="0 17 5 0" FontWeight="Bold" Foreground="#FF252525" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Background="White" Grid.Row="1">
+
+                <StackPanel Orientation="Horizontal" Height="30" Width="676" Margin="90 38 0 0" HorizontalAlignment="Left">
+                    <TextBlock Text="No. Of Persons: " Margin="0 1 4 0"/>
+                    <TextBox x:Name="NoOfPerson" TextChanged="NoOfPerson_TextChanged" Width="40" Height="23" Padding="1" FontSize="11" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="datePicker" Margin="60 0 0 0" Height="24" FontSize="11" Width="110" Padding="2" VerticalAlignment="Top" SelectedDateChanged="datePicker_SelectedDateChanged">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="IsReadOnly" Value="True"/>
+                                <Setter Property="Cursor" Value="Arrow"/>
+                            </Style>
+                            
+                        </DatePicker.Resources>
+                    </DatePicker>
+
+                    <TextBlock Text="Add-on Travel Insurance for $107: " Width="190" Margin="50 1 0 0"/>
+                    <RadioButton x:Name="rbYes" Margin="0 3 0 0" Cursor="Hand"/>
+                    <TextBlock Text="Yes" Margin="10 1 0 0"/>
+                    <RadioButton x:Name="rbNo" IsChecked="True" Margin="20 3 0 0" Cursor="Hand"/>
+                    <TextBlock Text="No" Margin="10 1 0 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+>
+                    <TextBlock x:Name="Error" Text="Please enter valid digits only." Width="200" HorizontalAlignment="Left" FontSize="11" Margin="90 4 0 10" Foreground="Red"/>
+                    <TextBlock x:Name="ErrorDate" Text="Please choose a valid date." Width="245" HorizontalAlignment="Left" FontSize="11" Margin="-10 4 0 10" Foreground="Red" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="50 10 0 0">
+                    <CheckBox x:Name="CBaddFlight" Checked="CBaddFlight_Checked" Unchecked="CBaddFlight_Unchecked" VerticalAlignment="Center" Margin="0 0 20 0" Visibility="Hidden" Cursor="Hand"/>
+                    <StackPanel Orientation="Horizontal" Background="LightGray" Width="656" HorizontalAlignment="Center" Height="82">
+                        <Image x:Name="Img1" Source="pack://application:,,,/Resources/Images/icons8-airport-50.png" Width="40" Height="40" Margin="20 0 0 0" Opacity="0.5"/>
+                        <TextBlock Text="Add Flight" VerticalAlignment="Center" Margin="20 0 100 0"/>
+                        <TextBlock Text="No. Of Tickets: " VerticalAlignment="Center" Margin="150 0 0 0"/>
+                        <ComboBox x:Name="NoOfFlightTickets" IsEnabled="{Binding IsChecked, ElementName=CBaddFlight}" SelectionChanged="NoOfFlightTickets_SelectionChanged" Width="60" Height="26" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False"></ComboBox>
+                        <TextBlock x:Name="ErrorTicket" FontSize="11" Text="Please Select Value!" VerticalAlignment="Center" Foreground="Red" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="50 20 0 0">
+                    <CheckBox x:Name="CBAddRoom" Unchecked="CBAddRoom_Unchecked" VerticalAlignment="Center" Margin="0 0 20 0" Visibility="Hidden" Checked="CBAddRoom_Checked" Cursor="Hand"/>
+                    <StackPanel Orientation="Horizontal" Background="LightGray" Width="656" HorizontalAlignment="Center" Height="110">
+                        <Image x:Name="Img2" Source="pack://application:,,,/Resources/Images/icons8-empty-bed-filled-40.png" Width="40" Height="40" Margin="20 0 0 0" Opacity="0.5"/>
+                        <TextBlock Text="Add Room" VerticalAlignment="Center" Margin="20 0 110 0"/>
+                        <Grid Margin="150 0 0 0" Width="250">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="0.5*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Image x:Name="Img3" Source="pack://application:,,,/Resources/Images/icons8-empty-bed-filled-40.png" Opacity="0.5" Width="30" Height="30" Margin="0 8 10 0"/>
+                                <TextBlock Text="Single (1 Person): " Height="30" VerticalAlignment="Bottom" Margin="0 0 0 -5"/>
+                                <TextBox x:Name="NoOfSingle" TextChanged="NoOfSingle_TextChanged" IsEnabled="{Binding IsChecked, ElementName=CBAddRoom}" Width="40" Height="20" VerticalAlignment="Bottom" Margin="15,10,0,6" Focusable="False" Cursor="Arrow"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                <Image x:Name="Img4" Source="pack://application:,,,/Resources/Images/icons8-two-beds-filled-40.png" Width="30" Height="30" Margin="0 0 10 0" Opacity="0.5"/>
+                                <TextBlock Text="Double (2 Person): " Height="25" VerticalAlignment="Center" Margin="0 5 0 -10" />
+                                <TextBox x:Name="NoOfDouble" TextChanged="NoOfDouble_TextChanged" IsEnabled="{Binding IsChecked, ElementName=CBAddRoom}" Width="40" Height="20" Margin="9,10,0,10" VerticalAlignment="Bottom" Focusable="False" Cursor="Arrow"/>
+                            </StackPanel>
+                            <TextBlock x:Name="ErrorRoom" FontSize="11" Grid.Row="2" Text="Error: Please enter digits more than 0 only" HorizontalAlignment="Left" Foreground="Red"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Margin="0 20 0 0" HorizontalAlignment="Stretch">
+
+                    <Button  x:Name="Close" Click="Close_Click" HorizontalAlignment="Left" Content="CLOSE" Padding="5"  Height="41" Width="190" Margin="90 0 0 0"/>
+                    <Button  x:Name="Confirm" Click="Confirm_Click" HorizontalAlignment="Right" Content="CONFIRM" Padding="5" Height="41" Width="190" Margin="0 0 70 0"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Page>

@@ -1,0 +1,79 @@
+﻿<Page x:Class="BookSharp.Pages.WelcomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+      Height="570"
+        Width="794"
+      Title="WelcomePage">
+
+    <Page.Resources>
+        <Style BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="#FF303030"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF94C771"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--Welcome Message-->
+        <TextBlock Grid.Column="1" Text="WELCOME TO" TextAlignment="Center" TextWrapping="Wrap"  FontFamily="pack://application:,,,/Resources/Fonts/#Corbert" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FF303030" Margin="0 0 0 150"/>
+
+        <TextBlock Grid.Column="1" Text="BOOKSHARP" TextAlignment="Center" TextWrapping="Wrap"  FontFamily="pack://application:,,,/Resources/Fonts/#Corbert" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="47" FontWeight="Medium" Foreground="#FF303030" Margin="0 0 0 70"/>
+        <Image Grid.Column="1" Source="pack://application:,,,/Resources/Images/City6.png" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Height="200" Width="400" Margin="0 0 10 90" Opacity="0.7" />
+
+
+        <Button x:Name="CreateButton" Click="BtnClickCreate" Grid.Column="0"  Height="120" Width="180"  Cursor="Hand" HorizontalAlignment="Right" Margin="0 30 30 60" Background="Transparent" MouseEnter="CreateButton_MouseEnter" MouseLeave="CreateButton_MouseLeave">
+            <Border x:Name="Border1" CornerRadius="5" Padding="2" Background="#FFE0FFCB">
+                <Grid Height="120" Width="180" >
+
+                    <Image x:Name="create1" Source="pack://application:,,,/Resources/Images/adduser1.png" VerticalAlignment="Center" HorizontalAlignment="Left"  Height="20" Width="20" Margin="35 0 20 0" Opacity="0.7" />
+                    <TextBlock  Text="Create Account" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Medium"  Foreground="Black" FontFamily="pack://application:,,,/Resources/Fonts/#Dense" FontSize="20" Margin="30 0 0 0" Opacity="0.7"/>
+                    <Image x:Name="create2" Source="pack://application:,,,/Resources/Images/rightarrow3.png" VerticalAlignment="Center" HorizontalAlignment="Left"  Height="30" Width="30" Margin="60 60 20 0" Opacity="0.7" Visibility="Hidden" >
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="180" />
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+            </Border>
+        </Button>
+        <!--Log In Button-->
+        <Button x:Name="LoginButton" Click="BtnClickLogin" Grid.Column="2"  Height="120" Width="180"  Cursor="Hand" HorizontalAlignment="Left" Margin="30 30 0 60" Background="Transparent" MouseEnter="LoginButton_MouseEnter" MouseLeave="LoginButton_MouseLeave">
+            <Border x:Name="Border2" CornerRadius="5" Padding="2" Background="#FFE0FFCB">
+                <Grid Height="120" Width="180" >
+
+                    <Image x:Name="login1" Source="pack://application:,,,/Resources/Images/user1.png" VerticalAlignment="Center" HorizontalAlignment="Right"  Height="20" Width="20" Margin="20 0 35 0" Opacity="0.7" Visibility="Visible" />
+
+                    <Image x:Name="login2" Source="pack://application:,,,/Resources/Images/rightarrow3.png" VerticalAlignment="Center" HorizontalAlignment="Right"  Height="30" Width="30" Margin="20 0 30 0" Opacity="0.7" Visibility="Hidden"/>
+
+
+                    <TextBlock  Text="Login to Account" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Medium"  Foreground="Black" FontFamily="pack://application:,,,/Resources/Fonts/#Dense" FontSize="20" Margin="0 0 30 0" Opacity="0.7"/> 
+                    <!--<Image   Source="pack://application:,,,/Resources/Images/rightarrow2.png" VerticalAlignment="Center" HorizontalAlignment="Right"  Height="24" Width="24" Margin="0 2 30 0" Opacity="0.7" />-->
+                </Grid>
+            </Border>
+        </Button>
+
+        </Grid>
+   
+</Page>

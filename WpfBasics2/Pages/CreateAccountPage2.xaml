@@ -1,0 +1,270 @@
+﻿<Page x:Class="BookSharp.Pages.CreateAccountPage2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+      Height="570"
+        Width="794"
+      Title="CreateAccountPage2" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <Style x:Key="RoundButtonStyleNoHover" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="180">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <!--<Setter Property="Background" Value="#FF94C771"/>
+                    <Setter Property="Foreground" Value="Black"/>-->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="LightHover" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+            <Setter Property="Background" Value="#FF303030"/>
+            <Setter Property="Foreground" Value="#FFDEDEDE"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFECEAE2"/>
+                    <Setter Property="Foreground" Value="#FF303030"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DarkHover" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"  TargetType="Button">
+            <Setter Property="Background" Value="#FF94C771"/>
+            <Setter Property="Foreground" Value="#FF303030"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF303030"/>
+                    <Setter Property="Foreground" Value="#FFDEDEDE"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+
+        </Grid.RowDefinitions>
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <!--Header Icon Area-->
+            <StackPanel Background="#FF94C771">
+                <Image  Grid.Row="0" Source="pack://application:,,,/Resources/Images/adduser2.png" VerticalAlignment="Center" Height="40" Margin="0 30" Opacity="0.9" />
+            </StackPanel>
+            <!--Header Title Area-->
+            <Grid Grid.Row="0" Grid.Column="1" Background="#FF303030">
+                <TextBlock Text="CREATE NEW ACCOUNT" FontSize="16" FontStyle="Italic" VerticalAlignment="Center" Margin="40" Foreground="#FFDEDEDE"/>
+            </Grid>
+        </Grid>
+        <!--Grey Border Around Container-->
+
+        <Grid Grid.Row="1" Background="LightGray" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <!--White Container With Rounded Border-->
+
+            <Grid Grid.Row="0" Background="#FFECEAE2" ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.8*"/>
+                </Grid.ColumnDefinitions>
+                <!--Info-->
+                <Button Grid.Column="0" Style="{StaticResource RoundButtonStyleNoHover}" Background="#FFBBBAB5" Height="45" Width="45"   VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock Text="1" FontFamily="Century Gothic" FontSize="17" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF303030"/>
+                </Button>
+                <TextBlock Grid.Column="1" Text="Information" VerticalAlignment="Center" Margin="20" FontFamily="Century Gothic" FontSize="14" FontWeight="Bold" Foreground="#FF303030" />
+                <!--Payment-->
+                <Button Grid.Column="2" Style="{StaticResource RoundButtonStyleNoHover}" Background="#FF94C771" Height="45" Width="45"   VerticalAlignment="Center" HorizontalAlignment="Right" Margin="44,17,0,17">
+                    <TextBlock Text="2" FontFamily="Century Gothic" FontSize="17" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF303030"/>
+                </Button>
+                <TextBlock Grid.Column="3" Text="Payment" VerticalAlignment="Center" Margin="20" FontFamily="Century Gothic" FontSize="14" FontWeight="Bold" Foreground="#FF303030" />
+                <!--Confirm-->
+                <Button Grid.Column="4" Style="{StaticResource RoundButtonStyleNoHover}" Background="#FFBBBAB5" Height="45" Width="45"   VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock Text="3" FontFamily="Century Gothic" FontSize="17" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF303030"/>
+                </Button>
+                <TextBlock Grid.Column="5" Text="Confirm" VerticalAlignment="Center" Margin="20" FontFamily="Century Gothic" FontSize="14" FontWeight="Bold" Foreground="#FF303030" />
+            </Grid>
+            <Border Grid.Row="1" Padding="22 0 22 22" Background="#FFECEAE2" >
+                <Border  Padding="15" Background="White" CornerRadius="20">
+                    <Grid Background="White" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                           
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3.3*"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+
+                        <!--Header TextBlock-->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Card Type:" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0 5 0 10" FontSize="13" FontWeight="Medium"/>
+
+                        <!--Header TextBlock-->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Card Number:" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0 5 0 10" FontSize="13" FontWeight="Medium"/>
+
+                        <!--Header TextBlock-->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Expiration Date:" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0 5 0 10" FontSize="13" FontWeight="Medium"/>
+
+                        <!--Header TextBlock-->
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Card Holder Name:" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0 5 0 10" FontSize="13" FontWeight="Medium"/>
+
+                        <!--Header TextBlock-->
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="CCV2/CVC2:" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0 5 0 10" FontSize="13" FontWeight="Medium"/>
+
+
+
+                        
+                        <!--CardType Input ComboBox and Error Message-->
+                        <ComboBox x:Name="comboBoxCardType" Grid.Row="0" Grid.Column="1"  FontSize="11" Height="20" Width="150"   Margin="10 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="comboBoxCardType_SelectionChanged" Cursor="Hand">
+                            <ComboBoxItem Cursor="Hand">Mastercard</ComboBoxItem>
+                            <ComboBoxItem Cursor="Hand">Visa</ComboBoxItem>
+                            <ComboBoxItem Cursor="Hand">American Express</ComboBoxItem>
+                        </ComboBox>
+
+                        <TextBlock x:Name="txtBlockCardTypeError" Visibility="Hidden" Grid.Row="0" Grid.Column="1" Text="Please select a card type" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="10 5 0 3" FontSize="9.5" Foreground="#FFEC0303"/>
+
+
+                        <!--Card Number Input TextBox and Error Message-->
+                        <TextBox x:Name="txtBoxCardNo" Grid.Row="1" Grid.Column="1" FontSize="10" Height="20" Width="150" Margin="10 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" GotFocus="txtBoxCardNo_GotFocus"/>
+
+                        <TextBlock x:Name="txtBlockCardNoError1" Visibility="Hidden" Grid.Row="1" Grid.Column="1" Text="Please enter a number" HorizontalAlignment="Left"  Margin="10,25,0,3" FontSize="9.5" Foreground="#FFEC0303"/>
+                        
+                        <TextBlock x:Name="txtBlockCardNoError2" Visibility="Hidden" Grid.Row="1" Grid.Column="1" Text="Please enter a number between 13-19 characters" HorizontalAlignment="Left"  Margin="10,25,0,3" FontSize="9.5" Foreground="#FFEC0303"/>
+
+                        
+                        <!--Expiry Month & Year Input TextBox and Error Message-->
+                        <TextBox x:Name="txtBoxExpMonth" Text="mm" Foreground="DarkGray"  Grid.Row="2" Grid.Column="1" FontSize="10" Height="21" Width="40" Margin="10 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" GotFocus="txtBoxExpMonth_GotFocus" LostFocus="txtBoxExpMonth_LostFocus"/>
+                        <TextBox x:Name="txtBoxExpYear" Text="yyyy" Foreground="DarkGray" Grid.Row="2" Grid.Column="1" FontSize="10" Height="21" Width="40" Margin="65 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" GotFocus="txtBoxExpYear_GotFocus" LostFocus="txtBoxExpYear_LostFocus"/>
+
+                        <TextBlock x:Name="txtBlockExpDateError" Visibility="Hidden" Grid.Row="2" Grid.Column="1" Text="Please enter a valid expiry date" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="10 5 0 3" FontSize="9.5" Foreground="#FFEC0303"/>
+
+
+                        <!--Card Holder Name Input TextBox and Error Message-->
+                        <TextBox x:Name="txtBoxCardHolderName" Grid.Row="3" Grid.Column="1"  FontSize="10" Height="20" Width="150"   Margin="10 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" GotFocus="txtBoxCardHolderName_GotFocus" />
+
+                        <TextBlock x:Name="txtBlockCardHolderNameError" Grid.Row="3" Grid.Column="1" Visibility="Hidden" Text="Please enter alphanumerals (max 26)" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="10 5 0 3" FontSize="9.5" Foreground="#FFEC0303"/>
+
+                        
+                        <!--CCV2/CVC2 Input TextBox and Error Message-->
+                        <TextBox x:Name="txtBoxCCV" Grid.Row="4" Grid.Column="1"  FontSize="10" Height="20" Width="150"   Margin="10 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" GotFocus="txtBoxCCV_GotFocus" />
+
+                        <TextBlock x:Name="txtBlockCCVError" Grid.Row="4" Grid.Column="1" Visibility="Hidden" Text="Please enter a valid number between 3-4 chars" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="10 5 0 3" FontSize="9.5" Foreground="#FFEC0303"/>
+
+
+                        <TextBlock x:Name="txtBlockGeneralError" Grid.Row="5" Grid.Column="1" Visibility="Hidden" Text="Please fill all boxes" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="10 5 0 3" FontSize="9.5" Foreground="#FFEC0303"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!--Buttons-->
+                        <!--Back Button-->
+                        <Button x:Name="BackButton" Style="{StaticResource LightHover}"  Grid.Row="7" Grid.Column="4" Height="35" Width="110" Content="Back"  FontSize="12" FontFamily="Century Gothic" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Cursor="Hand" Click="BackButton_Click"/>
+                        <!--Cancel Button-->
+                        <Button x:Name="CancelButton" Style="{StaticResource LightHover}"  Grid.Row="7" Grid.Column="4" Height="35" Width="110" Content="Cancel"  FontSize="12" FontFamily="Century Gothic" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Cursor="Hand" Click="CancelButton_Click"/>
+                        <!--Next Button-->
+                        <Button x:Name="NextButton" Style="{StaticResource DarkHover}" Grid.Row="7"  Grid.Column="4" Height="35" Width="110" Content="NEXT PAGE"  FontSize="12.5" FontFamily="Century Gothic" VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0" Cursor="Hand" Click="NextButton_Click"/>
+
+                    </Grid>
+                </Border>
+            </Border>
+        </Grid>
+
+
+    </Grid>
+</Page>

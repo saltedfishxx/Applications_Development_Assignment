@@ -1,0 +1,76 @@
+﻿<Page x:Class="BookSharp.Pages.FeedbackPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookSharp.Pages"
+      mc:Ignorable="d" 
+      Height="467"
+      Width="800"
+      Title="FeedbackPage">
+
+
+    <Grid Height="467">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Grey Border Around Container-->
+        <Border Grid.Row="1" Padding="22" Background="Transparent">
+            <!--White Container with Rounded Corners-->
+            <Border Padding="15" Background="White" CornerRadius="10">
+                <Grid Grid.Row="1" Background="White" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="30*"/>
+
+                        <RowDefinition Height="130*"/>
+                  
+                        <RowDefinition Height="53*"/>
+                    </Grid.RowDefinitions>
+
+
+
+
+                    <!--Tour Itinerary Title TextBlock-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="65,0,0,0" FontSize="12" Foreground="#FF464646"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="Email:" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="55,0,0,0" FontSize="12" Foreground="#FF464646"/>
+
+                        <TextBlock x:Name="txtBlockName"  Grid.Row="0" Grid.Column="0" FontSize="12"  Width="250"   Margin="0 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="#FF464646"/>
+                        <TextBlock x:Name="txtBlockEmail" Grid.Row="0" Grid.Column="1" FontSize="12"  Width="195"   Margin="0 0 55 0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="#FF464646"/>
+                    </Grid>
+
+
+                    <TextBox x:Name="txtBoxTitle" Grid.Row="1" FontSize="12" Text="Title" Foreground="DarkGray" Padding="4" Height="30" Margin="60 0 60 0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" BorderThickness="2" GotFocus="txtBoxTitle_GotFocus" LostFocus="txtBoxTitle_LostFocus" />
+
+      
+
+                    <!--Itenary Scrollable Textbox Bound to text file -->
+                    <Grid Grid.Row="2" Margin="60 10 60 30">
+                        <ScrollViewer x:Name="ChildScroll" VerticalScrollBarVisibility="Auto" >
+
+                            <TextBox x:Name="txtBoxMessage" Padding="4" FontSize="12" Foreground="DarkGray" Text="Enter your query here and we will reply to you via email..." TextWrapping="Wrap" BorderThickness="2" GotFocus="txtBoxMessage_GotFocus" LostFocus="txtBoxMessage_LostFocus"/>
+
+                        </ScrollViewer>
+                       
+                        
+                    </Grid>
+
+                    <!--Buttons-->
+
+                    <TextBlock x:Name="ErrorTextBlock"   Grid.Row="4"  Text="Please fill all boxes" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="65,0,0,0" FontSize="12" Foreground="#FFC50D0D" Visibility="Hidden"/>
+                    <!--Cencel Button-->
+                    <Button Style="{StaticResource GreyStyle}" Grid.Row="4" Content="CANCEL" x:Name="CancelButton" FontSize="15" FontWeight="Bold" FontFamily="Century Gothic"  Grid.Column="2" Height="45" Width="140" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 0 210 0"  Cursor="Hand" Click="CancelButton_Click" />
+                    <!--Send Button-->
+                    <Button Grid.Row="4" Content="SEND" x:Name="SendButton" Height="45" Width="140" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 0 55 0"  Cursor="Hand" Click="SendButton_Click" Foreground="#FF292929" FontSize="15" FontWeight="Bold" FontFamily="Century Gothic"/>
+                </Grid>
+
+            </Border>
+        </Border>
+    </Grid>
+
+</Page>

@@ -1,0 +1,12 @@
+﻿CMB001*CAMBODIA TOUR*6D4N FLAVOURS OF CAMBODIA*2300*1/1/2018*1/4/2018*6*pack://application:,,,/Resources/Images/Tour1.jpg
+CMB002*CAMBODIA TOUR*5D4N CAMBODIA EXPERIENCE*2000*1/3/2018*1/5/2018*5*pack://application:,,,/Resources/Images/Tour2.jpg
+CHN001*CHINA TOUR*8D7N WONDERS OF BEIJING AND XI'AN*2000*1/10/2017*1/12/2018*8*pack://application:,,,/Resources/Images/Tour3.jpg
+IND001*INDIA TOUR*8D GOLDEN TRIANGLE*2300*1/1/2018*1/9/2018*8*pack://application:,,,/Resources/Images/Tour4.jpg
+JPN001*JAPAN TOUR*6D5N BLISSFUL OKINAWA*2400*1/9/2017*1/4/2018*6*pack://application:,,,/Resources/Images/Tour5.jpg
+JPN002*JAPAN TOUR*7D5N HOKKAIDO ULTIMATE*3000*1/2/2018*1/6/2018*7*pack://application:,,,/Resources/Images/Tour6.jpg
+SKR001*SOUTH KOREA TOUR*7D5N INDULGENCE IN JEJU AND SEOUL*2700*1/2/2018*1/7/2018*7*pack://application:,,,/Resources/Images/Tour7.jpg
+SKR002*SOUTH KOREA TOUR*8D6N KOREA ULTIMATE*3000*1/2/2018*1/5/2018*8*pack://application:,,,/Resources/Images/Tour8.jpg
+TWN001*TAIWAN TOUR*7D6N WEST TAIWAN SERIES*2200*1/1/2018*1/4/2018*7*pack://application:,,,/Resources/Images/Tour9.jpg
+TWN002*TAIWAN TOUR*7D6N CAPTIVATING SOUTH TAIWAN *2100*1/10/2017*28/4/2018*7*pack://application:,,,/Resources/Images/Tour10.jpg
+THL001*THAILAND TOUR*7D CHIANGMAI AND CHIANGRAI FT. BANGKOK*2500*1/12/2017*1/5/2018*7*pack://application:,,,/Resources/Images/Tour11.jpg
+VTN001*VIETNAM TOUR*6D5N NORTHERN VIETNAM AND SAPA*2600*1/11/2017*1/6/2018*6*pack://application:,,,/Resources/Images/Tour12.jpg
